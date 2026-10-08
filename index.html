@@ -247,8 +247,11 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
 .sbtn:hover{border-color:var(--blue);color:var(--blue)}
 .sbtn.b{background:var(--blue);border-color:var(--blue);color:var(--white)}
 .sbtn.b:hover{background:var(--navy);border-color:var(--navy);color:var(--white)}
-.works .work:nth-child(even){margin-top:96px}
-@media (max-width:860px){.works{grid-template-columns:1fr;gap:64px}.works .work:nth-child(even){margin-top:0}}
+.works .work:not(.feature):nth-child(odd){margin-top:96px}
+.work.feature{grid-column:1/-1;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px;align-items:center;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.work.feature .shot{aspect-ratio:16/10}
+.work.feature .wbody h3{font-size:clamp(28px,3vw,40px)}
+@media (max-width:860px){.works{grid-template-columns:1fr;gap:64px}.works .work:not(.feature):nth-child(odd){margin-top:0}.work.feature{grid-template-columns:1fr;gap:24px;padding-bottom:0;border-bottom:0}}
 
 /* ───── 대형 문구 띠 ───── */
 .big{background:var(--navy);color:var(--white);padding-block:56px;overflow:hidden}
@@ -604,6 +607,19 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
       <p class="lead" style="margin:0;max-width:26em">모두 실제로 운영 중인 사이트입니다. 비슷한 사이트를 만들면 어떤 상품이 맞는지도 함께 확인해 보세요.</p>
     </div>
     <div class="works">
+      <article class="work feature">
+        <a class="shot" href="https://shinbumsun.github.io/tteokpanwang/" target="_blank" rel="noopener" aria-label="떡판왕 사이트 새 창으로 보기"><div class="pc"><img src="assets/tteok-pc.jpg" alt="떡판왕 사이트 PC 화면" loading="lazy"></div><div class="phone"><img src="assets/tteok-m.jpg" alt="" loading="lazy"></div></a>
+        <div class="wbody">
+          <span class="feat-badge">관리자 페이지 기능 포함</span>
+          <h3>떡판왕</h3>
+          <dl class="winfo"><dt>업종</dt><dd>음식점 · 즉석떡볶이 (선릉 · 을지로 · 구의)</dd><dt>유형</dt><dd>브랜드 · 매장 홈페이지 (원페이지)</dd><dt>주요 기능</dt><dd><b class="hl">관리자 페이지에서 직접 내용 관리</b>, 브랜드 스토리, 시그니처 메뉴, 전체 메뉴판, 사진 갤러리, 지점별 매장 안내</dd></dl>
+          <p class="match">이런 유형은 <b>STANDARD</b> 구성으로 제작할 수 있습니다. STANDARD에는 관리자 페이지 기능이 포함됩니다.</p>
+          <div class="wact">
+            <a class="sbtn" href="https://shinbumsun.github.io/tteokpanwang/" target="_blank" rel="noopener">사이트 방문 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M5 13L13 5M6.5 5H13v6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <button class="sbtn b" type="button" data-similar="standard" data-opts="">비슷하게 만들면 얼마? 견적 보기</button>
+          </div>
+        </div>
+      </article>
       <article class="work">
         <a class="shot" href="https://jungle2304.mycafe24.com/" target="_blank" rel="noopener" aria-label="BAR JUNGLE 사이트 새 창으로 보기"><div class="pc"><img src="assets/jungle-pc.jpg" alt="BAR JUNGLE 사이트 PC 화면" loading="lazy"></div><div class="phone"><img src="assets/jungle-m.jpg" alt="" loading="lazy"></div></a>
         <div class="wbody">
