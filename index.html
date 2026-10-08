@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>이틀 홈페이지</title>
+<meta name="description" content="원하는 예시 사이트와 이미지만 주시면 2일 이내 제작, 피드백 반영까지. Claude AI로 빠르게 만드는 맞춤 홈페이지.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700;800;900&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* 레이아웃: 흰 바탕 + 선명한 블루, 네이비 띠로 리듬. 히어로 → 문제 제기(스크롤 채움) → 키워드 띠 → 제작 사례 → 대형 문구 띠 → 48시간 → 일하는 방식 → 준비물 → FAQ → 문의 */
+:root{
+  --bg:#F7FAFF; --surface:#FFFFFF; --ink:#0D1B3E; --muted:#56637C; --line:#DCE5F2; --faint:#C3CCDA;
+  --blue:#1557F3; --blue-deep:#0D225D; --sky:#E8F3FF; --sky-2:#C0EAFF; --on-blue:#FFFFFF;
+  --navy:#0D225D; --on-navy:#FFFFFF; --point:#FFE83A;
+  --f-display:"Pretendard","Gothic A1","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-body:"Pretendard","IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --wrap:1120px; --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#060E1F; --surface:#0D1830; --ink:#E9F0FC; --muted:#9AA8C2; --line:#1D2C4A; --faint:#2E3D5C;
+  --blue:#5B8CFF; --blue-deep:#B3CBFF; --sky:#0F2142; --sky-2:#1C3A6B; --on-blue:#04101F;
+  --navy:#0A1A44; --on-navy:#FFFFFF; --point:#FFE83A; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#060E1F; --surface:#0D1830; --ink:#E9F0FC; --muted:#9AA8C2; --line:#1D2C4A; --faint:#2E3D5C;
+  --blue:#5B8CFF; --blue-deep:#B3CBFF; --sky:#0F2142; --sky-2:#1C3A6B; --on-blue:#04101F;
+  --navy:#0A1A44; --on-navy:#FFFFFF; --point:#FFE83A; color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.25}
+.eyebrow{font-family:var(--f-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin:0 0 14px}
+.sec{padding-block:96px}
+.sec-head{display:grid;gap:12px;max-width:640px;margin-bottom:48px}
+.sec-head h2{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.02em}
+.sec-head p{margin:0;color:var(--muted)}
+
+/* 헤더 */
+.hd{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.hd .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo{font-family:var(--f-display);font-weight:900;font-size:19px;letter-spacing:-.02em;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--blue);color:var(--on-blue);font-size:14px}
+.nav{display:flex;gap:28px;font-size:15px;color:var(--muted)}
+.nav a{text-decoration:none}
+.nav a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid transparent;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-pri{background:var(--blue);color:var(--on-blue)}
+.btn-pri:hover{background:var(--blue-deep)}
+.btn-ghost{border-color:var(--line);background:var(--surface)}
+.hd .btn{padding:9px 16px;font-size:14px}
+@media (max-width:760px){.nav{display:none}}
+
+/* 히어로 */
+.hero{position:relative;overflow:hidden;padding-block:80px 96px}
+.hero::before{content:"";position:absolute;inset:-40% -20% auto auto;width:780px;height:780px;border-radius:50%;background:radial-gradient(circle,var(--sky-2) 0%,transparent 65%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero-copy{min-width:0}
+.hero h1{font-size:clamp(40px,6.4vw,72px);font-weight:900;letter-spacing:-.035em;line-height:1.12}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero .lead{font-size:18px;color:var(--muted);margin:24px 0 32px;max-width:30em}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:10px 24px;margin:36px 0 0;padding:0;list-style:none;font-size:14px;color:var(--muted)}
+.hero-facts li{display:flex;align-items:center;gap:8px}
+.hero-facts li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue)}
+
+/* 브라우저 창 */
+.win{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 24px 60px -30px color-mix(in srgb,var(--blue-deep) 45%,transparent)}
+.win-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--bg)}
+.win-bar i{width:9px;height:9px;border-radius:50%;background:var(--sky-2)}
+.win-url{margin-left:10px;flex:1;min-width:0;font-family:var(--f-mono);font-size:11.5px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:3px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+.stage{position:relative;min-width:0;padding:10px 10px 40px 0}
+.stage .win{position:relative}
+.stage .w2{position:absolute;width:62%;right:-6px;bottom:0;transform:rotate(2deg)}
+.clock{position:absolute;left:-14px;bottom:18px;z-index:2;background:var(--blue);color:var(--on-blue);border-radius:16px;padding:14px 18px;font-family:var(--f-display);box-shadow:0 18px 40px -18px var(--blue)}
+.clock small{display:block;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;opacity:.85}
+.clock strong{font-size:30px;font-weight:900;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+
+/* 미니 와이어프레임 */
+.mock{padding:16px;display:grid;gap:10px}
+.blk{background:var(--sky);border-radius:6px}
+.blk.b{background:var(--blue)}
+.blk.d{background:var(--sky-2)}
+.ln{height:7px;border-radius:4px;background:var(--line)}
+.row{display:grid;gap:8px}
+
+@media (max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .stage{max-width:520px;width:100%}
+}
+
+/* 제작 사례 */
+.works{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.work{display:grid;gap:18px;text-decoration:none;color:inherit}
+.work .win{transition:transform .25s,box-shadow .25s}
+.work .mock{height:230px;align-content:start;overflow:hidden}
+.work-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.work-meta>div{min-width:0}
+.tag{display:inline-block;font-size:12.5px;font-weight:600;color:var(--blue);background:var(--sky);border-radius:999px;padding:3px 10px;margin-bottom:8px}
+.work h3{font-size:21px;font-weight:800;letter-spacing:-.01em}
+.work p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.go{flex:none;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);transition:background .2s,color .2s}
+.work:hover .go{background:var(--blue);color:var(--on-blue);border-color:var(--blue)}
+@media (max-width:760px){.works{grid-template-columns:1fr}}
+
+/* 48시간 타임라인 */
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.tl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative}
+.tl::before{content:"";position:absolute;left:0;right:0;top:27px;height:2px;background:linear-gradient(90deg,var(--blue),var(--sky-2))}
+.tl li{position:relative;padding-right:24px;min-width:0}
+.tl .t{display:inline-block;position:relative;font-family:var(--f-mono);font-size:13px;font-weight:500;background:var(--surface);color:var(--blue);border:2px solid var(--blue);border-radius:999px;padding:12px 16px;line-height:1;font-variant-numeric:tabular-nums}
+.tl li:last-child .t{background:var(--blue);color:var(--on-blue)}
+.tl h3{font-size:19px;font-weight:800;margin:22px 0 8px}
+.tl p{margin:0;color:var(--muted);font-size:15px}
+@media (max-width:860px){
+  .tl{grid-template-columns:1fr;gap:32px}
+  .tl::before{left:27px;right:auto;top:10px;bottom:10px;width:2px;height:auto;background:linear-gradient(180deg,var(--blue),var(--sky-2))}
+  .tl li{padding:0 0 0 0}
+  .tl h3{margin-top:14px}
+}
+
+/* 준비물 + 제작 가능 분야 */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:36px;min-width:0}
+.panel h3{font-size:22px;font-weight:800;margin-bottom:6px}
+.panel>p{margin:0 0 24px;color:var(--muted);font-size:15px}
+.check{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.check li{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start}
+.check li svg{margin-top:3px}
+.check b{display:block;font-weight:600}
+.check span{color:var(--muted);font-size:14.5px}
+.panel.blue{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
+.panel.blue>p{color:color-mix(in srgb,var(--on-blue) 80%,transparent)}
+.kinds{display:flex;flex-wrap:wrap;gap:10px}
+.kinds span{border:1px solid color-mix(in srgb,var(--on-blue) 35%,transparent);border-radius:999px;padding:8px 16px;font-size:15px;font-weight:500}
+.panel .note{margin:28px 0 0;padding-top:20px;border-top:1px solid color-mix(in srgb,var(--on-blue) 25%,transparent);font-size:14.5px;color:color-mix(in srgb,var(--on-blue) 85%,transparent)}
+@media (max-width:860px){.split{grid-template-columns:1fr}.panel{padding:28px 22px}}
+
+/* FAQ */
+.faq{display:grid;gap:12px;max-width:820px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 22px}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:20px 0;font-weight:600;font-size:16.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--f-mono);color:var(--blue);font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 20px;color:var(--muted);font-size:15.5px}
+
+/* 문의 */
+.cta{padding-block:40px 96px}
+.cta-box{position:relative;overflow:hidden;border-radius:28px;background:var(--blue-deep);color:var(--bg);padding:64px 56px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.cta-box::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;border:60px solid color-mix(in srgb,var(--bg) 10%,transparent);pointer-events:none}
+.cta-box h2{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-.025em}
+.cta-box p{margin:14px 0 0;opacity:.85}
+.contact{position:relative;z-index:1;display:grid;gap:12px;min-width:0}
+.contact div{background:color-mix(in srgb,var(--bg) 12%,transparent);border-radius:14px;padding:14px 18px}
+.contact small{display:block;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;opacity:.75}
+.contact strong{font-size:17px;word-break:break-all}
+@media (max-width:860px){.cta-box{grid-template-columns:1fr;padding:44px 24px}}
+
+/* ───── 인터랙션 ───── */
+.hd{transition:box-shadow .3s,background .3s}
+.hd.scrolled{box-shadow:0 8px 30px -18px color-mix(in srgb,var(--blue-deep) 50%,transparent)}
+.nav a{position:relative;transition:color .2s}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;border-radius:2px;background:var(--blue);transform:scaleX(0);transition:transform .25s}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+.nav a.on{color:var(--ink)}
+.logo b{transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.logo:hover b{transform:rotate(-12deg) scale(1.08)}
+
+/* 히어로: 페이지가 조립되는 장면 */
+.stage{transition:transform .2s ease-out;transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+.build>*{animation:pop .6s cubic-bezier(.2,.9,.3,1.2) both}
+.build>*:nth-child(1){animation-delay:.2s}.build>*:nth-child(2){animation-delay:.45s}.build>*:nth-child(3){animation-delay:.65s}.build>*:nth-child(4){animation-delay:.75s}.build>*:nth-child(5){animation-delay:.85s}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+.stage .w2{animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:rotate(2deg) translateY(0)}50%{transform:rotate(1deg) translateY(-10px)}}
+.clock{animation:pulse 2.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 18px 40px -18px var(--blue)}50%{box-shadow:0 18px 40px -18px var(--blue),0 0 0 10px color-mix(in srgb,var(--blue) 18%,transparent)}}
+.win-url .caret{display:inline-block;width:1px;height:1em;background:var(--blue);vertical-align:-2px;margin-left:1px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.shine{position:relative;overflow:hidden}
+.shine::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,color-mix(in srgb,#fff 35%,transparent) 50%,transparent 70%);transform:translateX(-100%);animation:shine 3.5s ease-in-out 1.2s infinite}
+@keyframes shine{0%{transform:translateX(-100%)}40%,100%{transform:translateX(100%)}}
+.hero h1 em{position:relative;display:inline-block;isolation:isolate}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.16em;border-radius:4px;background:var(--sky-2);z-index:-1;transform-origin:left;animation:under .8s .5s cubic-bezier(.6,0,.2,1) both}
+@keyframes under{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+
+/* 제작 사례: 기울기 + 화면 스크롤 */
+.work .win{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0));transition:transform .2s ease-out,box-shadow .3s}
+.work:hover .win{--ty:-6px;box-shadow:0 34px 70px -30px color-mix(in srgb,var(--blue-deep) 60%,transparent)}
+.work .mock{position:relative}
+.mock-in{display:grid;gap:10px;transition:transform 2.4s cubic-bezier(.45,0,.2,1)}
+.work:hover .mock-in{transform:translateY(calc(-100% + 198px))}
+.work .mock::after{content:"마우스를 올리면 스크롤";position:absolute;right:12px;bottom:12px;font-size:11.5px;font-weight:600;color:var(--blue);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 10px;opacity:0;transform:translateY(6px);transition:.3s}
+.work:hover .mock::after{content:"사이트 열기 ↗";opacity:1;transform:none}
+.work .go svg{transition:transform .3s}
+.work:hover .go svg{transform:translate(2px,-2px)}
+
+/* 등장 효과 (JS가 있을 때만, 아래쪽 요소만) */
+.rv{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:var(--d,0s)}
+.rv.pre{opacity:0;transform:translateY(28px)}
+
+/* 타임라인 진행선 */
+.tl::before{transform-origin:left;transition:transform 1.4s cubic-bezier(.6,0,.2,1)}
+.tl.pre::before{transform:scaleX(0)}
+.tl .t{transition:background .4s,color .4s,transform .4s}
+.tl.pre .t{transform:scale(.85)}
+.tl li:hover .t{background:var(--blue);color:var(--on-blue)}
+@media (max-width:860px){.tl::before{transform-origin:top}.tl.pre::before{transform:scaleY(0)}}
+
+/* 칩 / 체크 / FAQ */
+.kinds span{transition:background .2s,color .2s,transform .2s;cursor:default}
+.kinds span:hover{background:var(--on-blue);color:var(--blue);transform:translateY(-2px)}
+.check li{transition:transform .2s}
+.check li:hover{transform:translateX(4px)}
+.faq details{transition:border-color .2s,box-shadow .2s,opacity .7s,transform .7s;transition-delay:0s,0s,var(--d,0s),var(--d,0s)}
+.faq details:hover,.faq details[open]{border-color:var(--sky-2);box-shadow:0 10px 30px -22px var(--blue)}
+.faq summary::after{transition:transform .3s}
+.faq details[open] summary::after{content:"+";transform:rotate(45deg)}
+.faq details p{animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* 문의 박스 스포트라이트 */
+.cta-box::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,70%) var(--my,30%),color-mix(in srgb,var(--blue) 45%,transparent),transparent 60%);pointer-events:none;transition:opacity .3s}
+.cta-box>*{position:relative;z-index:1}
+.contact div{transition:background .2s,transform .2s}
+.contact div:hover{background:color-mix(in srgb,var(--bg) 20%,transparent);transform:translateX(-4px)}
+
+/* 맨 위로 */
+.top-btn{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:20;width:46px;height:46px;border-radius:50%;border:0;background:var(--blue);color:var(--on-blue);display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 30px -12px var(--blue);opacity:0;transform:translateY(16px);pointer-events:none;transition:.3s}
+.top-btn.show{opacity:1;transform:none;pointer-events:auto}
+
+/* ───── 벤치마킹 추가 섹션 ───── */
+.hero-tag{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin:0 0 18px;font-weight:700;font-size:17px;color:var(--ink)}
+.hero-tag b{color:var(--blue)}
+.ai-chip{font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--blue);background:var(--sky);border:1px solid var(--sky-2);border-radius:999px;padding:4px 10px}
+.hero h1 em::after{background:var(--point);opacity:.75}
+.hero{padding-bottom:120px}
+.cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:grid;justify-items:center;gap:8px;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--muted)}
+.cue i{position:relative;width:2px;height:38px;border-radius:2px;background:var(--line);overflow:hidden}
+.cue i::after{content:"";position:absolute;left:0;top:0;width:2px;height:14px;border-radius:2px;background:var(--blue);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{from{transform:translateY(-14px)}to{transform:translateY(38px)}}
+@media (max-width:900px){.cue{display:none}.hero{padding-bottom:96px}}
+
+.why{background:var(--surface);border-top:1px solid var(--line)}
+.why-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.why-title{position:sticky;top:120px;font-size:clamp(30px,4.2vw,48px);font-weight:900;letter-spacing:-.03em;line-height:1.28}
+.why-title em{font-style:normal;color:var(--blue)}
+.fill{display:grid;gap:36px;min-width:0;padding-block:8px 40px}
+.fill p{margin:0;font-size:clamp(20px,2.4vw,28px);font-weight:700;line-height:1.6;letter-spacing:-.015em}
+.fill-t{color:transparent;background:linear-gradient(var(--ink),var(--ink)) 0 0/var(--p,100%) 100% no-repeat,linear-gradient(var(--faint),var(--faint));-webkit-background-clip:text;background-clip:text}
+@media (max-width:860px){.why-grid{grid-template-columns:1fr;gap:32px}.why-title{position:static}}
+
+.mq{padding-block:72px;display:grid;gap:14px;overflow:hidden;background:var(--bg)}
+.mq-head{margin:0 auto 18px;padding-inline:20px;text-align:center;font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.02em;font-family:var(--f-display)}
+.mq-row{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.mq-track{display:flex;gap:12px;width:max-content;animation:mq 46s linear infinite}
+.mq-row.rev .mq-track{animation-direction:reverse;animation-duration:52s}
+.mq-row:hover .mq-track{animation-play-state:paused}
+.mq-track span{flex:none;white-space:nowrap;padding:14px 26px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font-size:17px;font-weight:600;transition:background .2s,color .2s,border-color .2s}
+.mq-row.rev .mq-track span{background:var(--sky);border-color:var(--sky-2);color:var(--blue)}
+.mq-track span:hover{background:var(--blue);border-color:var(--blue);color:var(--on-blue)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+.big{background:var(--navy);color:var(--on-navy);padding-block:72px 64px;overflow:hidden}
+.big-track{display:flex;gap:56px;width:max-content;animation:mq 30s linear infinite}
+.big-track span{flex:none;white-space:nowrap;font-family:var(--f-display);font-weight:900;font-size:clamp(44px,8vw,112px);letter-spacing:-.04em;line-height:1.1}
+.big-track span.o{color:transparent;-webkit-text-stroke:2px var(--on-navy)}
+.big-track span:not(.o)::after{content:"";display:inline-block;width:.22em;height:.22em;margin-left:56px;border-radius:50%;background:var(--point);vertical-align:middle}
+.big-sub{margin:28px auto 0;font-size:17px;opacity:.8}
+
+.how-list{display:grid;gap:0;border-top:1px solid var(--line)}
+.how-item{display:grid;grid-template-columns:72px 1fr;gap:28px;align-items:start;padding-block:36px;border-bottom:1px solid var(--line);transition:background .3s,padding .3s,opacity .7s,transform .7s;transition-delay:0s,0s,var(--d,0s),var(--d,0s)}
+.how-item:hover{background:linear-gradient(90deg,var(--sky),transparent 70%);padding-inline:20px}
+.how-ic{display:grid;place-items:center;width:72px;height:72px;border-radius:20px;background:var(--sky);color:var(--blue);transition:transform .4s cubic-bezier(.3,1.6,.5,1),background .3s,color .3s}
+.how-item:hover .how-ic{transform:rotate(-8deg) scale(1.06);background:var(--blue);color:var(--on-blue)}
+.how-item h3{font-size:clamp(20px,2.4vw,26px);font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.how-item p{margin:0;color:var(--muted);max-width:40em}
+@media (max-width:600px){.how-item{grid-template-columns:1fr;gap:16px}.how-ic{width:56px;height:56px;border-radius:16px}}
+
+.float-cta{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:20;display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:999px;background:var(--blue);color:var(--on-blue);font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 14px 34px -12px var(--blue);opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .3s,transform .3s,background .2s}
+.float-cta.show{opacity:1;transform:none;pointer-events:auto}
+.float-cta:hover{background:var(--navy)}
+.top-btn{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+
+@media (prefers-reduced-motion:reduce){.rv.pre,.tl.pre .t{opacity:1;transform:none}.tl.pre::before{transform:none}.mq-track,.big-track{animation:none}}
+
+.ft{border-top:1px solid var(--line);padding-block:28px;font-size:13.5px;color:var(--muted)}
+.ft .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+</style>
+</head>
+<body>
+
+<!-- 헤더 -->
+<header class="hd">
+  <div class="wrap">
+    <a class="logo" href="#top"><b>48</b>이틀 홈페이지</a>
+    <nav class="nav" aria-label="주요 메뉴">
+      <a href="#works">제작 사례</a>
+      <a href="#process">진행 과정</a>
+      <a href="#how">일하는 방식</a>
+      <a href="#prepare">준비물</a>
+      <a href="#faq">자주 묻는 질문</a>
+    </nav>
+    <a class="btn btn-pri" href="#contact">제작 문의</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 히어로 -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="hero-tag"><span class="ai-chip">Claude AI</span>보여주시면, 이틀 뒤 완성으로<b>.</b></p>
+      <h1>원하는 사이트,<br><em>이틀</em>이면<br>완성됩니다.</h1>
+      <p class="lead">마음에 드는 예시 사이트와 이미지만 보내주세요. 2일 안에 완성본을 보여드리고, 피드백을 받아 원하시는 모습이 될 때까지 다듬습니다.</p>
+      <div class="hero-cta">
+        <a class="btn btn-pri" href="#contact">제작 문의하기
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="#works">제작 사례 보기</a>
+      </div>
+      <ul class="hero-facts">
+        <li>자료 전달 후 48시간 내 제작</li>
+        <li>피드백 반영 수정</li>
+        <li>PC · 모바일 모두 대응</li>
+      </ul>
+    </div>
+
+    <div class="stage" aria-hidden="true">
+      <div class="win">
+        <div class="win-bar"><i></i><i></i><i></i><span class="win-url"><span id="typed">your-brand.com</span><span class="caret"></span></span></div>
+        <div class="mock build" style="padding:18px">
+          <div class="blk b shine" style="height:130px;display:grid;align-content:end;padding:16px;gap:8px">
+            <div class="ln" style="width:55%;height:11px;background:var(--on-blue);opacity:.9"></div>
+            <div class="ln" style="width:35%;background:var(--on-blue);opacity:.5"></div>
+          </div>
+          <div class="row" style="grid-template-columns:repeat(3,1fr)">
+            <div class="blk" style="height:64px"></div><div class="blk" style="height:64px"></div><div class="blk" style="height:64px"></div>
+          </div>
+          <div class="ln" style="width:80%"></div>
+          <div class="ln" style="width:60%"></div>
+          <div class="ln" style="width:70%"></div>
+        </div>
+      </div>
+      <div class="win w2">
+        <div class="win-bar"><i></i><i></i><i></i></div>
+        <div class="mock">
+          <div class="blk d" style="height:54px"></div>
+          <div class="ln" style="width:70%"></div>
+          <div class="ln" style="width:45%"></div>
+          <div class="blk" style="height:30px;width:50%;background:var(--blue)"></div>
+        </div>
+      </div>
+      <div class="clock"><small>DELIVERY</small><strong>D+2</strong></div>
+    </div>
+  </div>
+  <a class="cue" href="#why" aria-label="아래로 스크롤"><span>SCROLL</span><i></i></a>
+</section>
+
+<!-- 문제 제기: 스크롤하면 글자가 채워짐 -->
+<section class="sec why" id="why">
+  <div class="wrap why-grid">
+    <h2 class="why-title">홈페이지는<br>만드는 시간보다<br><em>기다리는 시간</em>이<br>더 길었습니다</h2>
+    <div class="fill">
+      <p><span class="fill-t">기획서를 쓰고, 시안을 기다리고, 수정 요청을 보내고 또 기다립니다.</span></p>
+      <p><span class="fill-t">그 사이에 오픈 날짜는 한 주, 두 주씩 밀려납니다.</span></p>
+      <p><span class="fill-t">이틀 홈페이지는 마음에 드는 예시 사이트 하나에서 출발합니다. 설명 대신 실제로 열리는 사이트를 2일 안에 먼저 보여드리고, 거기서부터 함께 다듬습니다.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 만들 수 있는 것: 3줄 키워드 띠 -->
+<section class="mq" aria-label="제작 가능 분야">
+  <p class="mq-head">매장 소개부터, 청첩장, 기업 홈페이지까지</p>
+    <div class="mq-row"><div class="mq-track"><span>매장 소개</span><span>카페 · 바</span><span>레스토랑 메뉴판</span><span>공방 · 스튜디오</span><span>네일 · 헤어샵</span><span>펜션 · 숙소</span><span>매장 소개</span><span>카페 · 바</span><span>레스토랑 메뉴판</span><span>공방 · 스튜디오</span><span>네일 · 헤어샵</span><span>펜션 · 숙소</span><span>매장 소개</span><span>카페 · 바</span><span>레스토랑 메뉴판</span><span>공방 · 스튜디오</span><span>네일 · 헤어샵</span><span>펜션 · 숙소</span><span>매장 소개</span><span>카페 · 바</span><span>레스토랑 메뉴판</span><span>공방 · 스튜디오</span><span>네일 · 헤어샵</span><span>펜션 · 숙소</span></div></div>
+    <div class="mq-row rev"><div class="mq-track"><span>모바일 청첩장</span><span>돌잔치 초대장</span><span>행사 · 이벤트 안내</span><span>RSVP 참석 양식</span><span>갤러리</span><span>오시는 길</span><span>모바일 청첩장</span><span>돌잔치 초대장</span><span>행사 · 이벤트 안내</span><span>RSVP 참석 양식</span><span>갤러리</span><span>오시는 길</span><span>모바일 청첩장</span><span>돌잔치 초대장</span><span>행사 · 이벤트 안내</span><span>RSVP 참석 양식</span><span>갤러리</span><span>오시는 길</span><span>모바일 청첩장</span><span>돌잔치 초대장</span><span>행사 · 이벤트 안내</span><span>RSVP 참석 양식</span><span>갤러리</span><span>오시는 길</span></div></div>
+    <div class="mq-row"><div class="mq-track"><span>기업 홈페이지</span><span>건설 · 제조</span><span>병원 · 의원</span><span>학원 · 교습소</span><span>상담 · 예약</span><span>제품 랜딩페이지</span><span>기업 홈페이지</span><span>건설 · 제조</span><span>병원 · 의원</span><span>학원 · 교습소</span><span>상담 · 예약</span><span>제품 랜딩페이지</span><span>기업 홈페이지</span><span>건설 · 제조</span><span>병원 · 의원</span><span>학원 · 교습소</span><span>상담 · 예약</span><span>제품 랜딩페이지</span><span>기업 홈페이지</span><span>건설 · 제조</span><span>병원 · 의원</span><span>학원 · 교습소</span><span>상담 · 예약</span><span>제품 랜딩페이지</span></div></div>
+</section>
+
+<!-- 제작 사례 -->
+<section class="sec" id="works">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Portfolio</p>
+      <h2>이런 사이트를 만들었습니다</h2>
+      <p>매장 소개부터 모바일 청첩장, 기업 홈페이지, 상담 예약 사이트까지 실제로 운영 중인 사이트입니다. 눌러서 직접 확인해 보세요.</p>
+    </div>
+
+    <div class="works">
+      <a class="work" href="https://jungle2304.mycafe24.com/" target="_blank" rel="noopener">
+        <div class="win">
+          <div class="win-bar"><i></i><i></i><i></i><span class="win-url">jungle2304.mycafe24.com</span></div>
+          <div class="mock" aria-hidden="true">
+            <div class="blk b" style="height:92px"></div>
+            <div class="row" style="grid-template-columns:repeat(5,1fr)">
+              <div class="blk d" style="aspect-ratio:1"></div><div class="blk d" style="aspect-ratio:1"></div><div class="blk d" style="aspect-ratio:1"></div><div class="blk d" style="aspect-ratio:1"></div><div class="blk d" style="aspect-ratio:1"></div>
+            </div>
+            <div class="row" style="grid-template-columns:1fr 1fr">
+              <div class="ln"></div><div class="ln" style="width:60%"></div>
+              <div class="ln" style="width:80%"></div><div class="ln" style="width:40%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-meta">
+          <div><span class="tag">매장 · 바</span><h3>BAR JUNGLE</h3><p>익선동 바 소개 사이트. 시그니처 칵테일, 전체 메뉴, 매장 사진, 오시는 길</p></div>
+          <span class="go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="work" href="https://shinbumsun.github.io/wedding-0306/" target="_blank" rel="noopener">
+        <div class="win">
+          <div class="win-bar"><i></i><i></i><i></i><span class="win-url">shinbumsun.github.io/wedding-0306</span></div>
+          <div class="mock" aria-hidden="true" style="justify-items:center">
+            <div class="blk d" style="height:110px;width:44%;border-radius:80px 80px 8px 8px"></div>
+            <div class="ln" style="width:38%;height:9px;background:var(--blue)"></div>
+            <div class="ln" style="width:52%"></div>
+            <div class="row" style="grid-template-columns:repeat(3,1fr);width:60%">
+              <div class="blk" style="height:36px"></div><div class="blk" style="height:36px"></div><div class="blk" style="height:36px"></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-meta">
+          <div><span class="tag">모바일 청첩장</span><h3>저희 결혼합니다</h3><p>인사말, 갤러리, 오시는 길, 마음 전하실 곳, 참석 여부(RSVP) 양식, 링크 공유</p></div>
+          <span class="go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="work" href="https://shinbumsun.github.io/hana-enc/" target="_blank" rel="noopener">
+        <div class="win">
+          <div class="win-bar"><i></i><i></i><i></i><span class="win-url">shinbumsun.github.io/hana-enc</span></div>
+          <div class="mock" aria-hidden="true">
+            <div class="row" style="grid-template-columns:1.4fr 1fr;align-items:center">
+              <div class="row"><div class="ln" style="height:12px;background:var(--blue)"></div><div class="ln" style="width:70%"></div><div class="ln" style="width:50%"></div></div>
+              <div class="blk d" style="height:96px"></div>
+            </div>
+            <div class="row" style="grid-template-columns:repeat(4,1fr)">
+              <div class="blk" style="height:58px"></div><div class="blk" style="height:58px"></div><div class="blk" style="height:58px"></div><div class="blk" style="height:58px"></div>
+            </div>
+            <div class="blk b" style="height:28px;width:34%"></div>
+          </div>
+        </div>
+        <div class="work-meta">
+          <div><span class="tag">기업 홈페이지</span><h3>하나이엔씨개발(주)</h3><p>해체·비계·토공 전문 건설사. 회사소개, 사업영역, 시공실적, 견적 문의</p></div>
+          <span class="go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+
+      <a class="work" href="https://sbs7195.mycafe24.com/" target="_blank" rel="noopener">
+        <div class="win">
+          <div class="win-bar"><i></i><i></i><i></i><span class="win-url">sbs7195.mycafe24.com</span></div>
+          <div class="mock" aria-hidden="true">
+            <div class="blk d" style="height:70px"></div>
+            <div class="row" style="grid-template-columns:1fr 1fr">
+              <div class="blk" style="height:72px;display:grid;align-content:end;padding:10px;gap:6px"><div class="ln" style="width:60%"></div><div class="ln" style="width:35%;background:var(--blue)"></div></div>
+              <div class="blk" style="height:72px;display:grid;align-content:end;padding:10px;gap:6px"><div class="ln" style="width:60%"></div><div class="ln" style="width:35%;background:var(--blue)"></div></div>
+            </div>
+            <div class="row" style="grid-template-columns:repeat(3,1fr)">
+              <div class="blk b" style="height:26px;border-radius:999px"></div><div class="blk" style="height:26px;border-radius:999px"></div><div class="blk" style="height:26px;border-radius:999px"></div>
+            </div>
+          </div>
+        </div>
+        <div class="work-meta">
+          <div><span class="tag">상담 · 예약</span><h3>지리산이도령 천을당</h3><p>사주·신점 상담 사이트. 상담 코스와 가격, 갤러리, 후기, 문의 채널</p></div>
+          <span class="go" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6M6 5h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 대형 문구 띠 -->
+<section class="big" aria-label="이틀 홈페이지 약속">
+  <div class="big-track" aria-hidden="true">
+    <span>예시 하나로 시작해서</span><span class="o">이틀 뒤에 완성합니다</span><span>예시 하나로 시작해서</span><span class="o">이틀 뒤에 완성합니다</span>
+  </div>
+  <p class="big-sub wrap">설명서보다 실물이 빠릅니다. 먼저 보여드리고, 함께 고칩니다.</p>
+</section>
+
+<!-- 진행 과정 -->
+<section class="sec band" id="process">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Process · 48 hours</p>
+      <h2>자료를 받은 날부터 이틀</h2>
+      <p>원하는 예시 사이트와 이미지가 준비되어 있다면, 아래 일정으로 진행됩니다.</p>
+    </div>
+    <ol class="tl">
+      <li>
+        <span class="t">DAY 0</span>
+        <h3>자료 전달</h3>
+        <p>참고하고 싶은 예시 사이트 링크, 로고와 사진, 넣고 싶은 문구를 보내주세요.</p>
+      </li>
+      <li>
+        <span class="t">DAY 1</span>
+        <h3>구성 · 디자인</h3>
+        <p>예시 사이트의 분위기를 바탕으로 페이지 구성과 디자인을 잡고 내용을 채웁니다.</p>
+      </li>
+      <li>
+        <span class="t">DAY 2</span>
+        <h3>완성본 전달</h3>
+        <p>PC와 모바일에서 바로 확인할 수 있는 링크로 완성본을 보내드립니다.</p>
+      </li>
+      <li>
+        <span class="t">FEEDBACK</span>
+        <h3>피드백 반영</h3>
+        <p>문구, 색상, 사진, 순서 등 고치고 싶은 부분을 말씀해 주시면 반영해 다시 보내드립니다.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 일하는 방식 -->
+<section class="sec how" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">How we work</p>
+      <h2>빠르지만 대충 만들지 않습니다</h2>
+      <p>속도는 AI가 내고, 확인과 마무리는 사람이 합니다.</p>
+    </div>
+    <div class="how-list">
+      <article class="how-item">
+        <div class="how-ic" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l2.6 7.4L24 13l-7.4 2.6L14 23l-2.6-7.4L4 13l7.4-2.6L14 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        <div><h3>Claude AI로 만드는 속도</h3><p>디자인과 코드 작업을 Claude AI와 함께 진행해 몇 주 걸리던 제작을 이틀로 줄였습니다. 남는 시간은 내용을 다듬는 데 씁니다.</p></div>
+      </article>
+      <article class="how-item">
+        <div class="how-ic" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M5 6h18v12H11l-6 5V6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 11h8M10 14.5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div><h3>말로 하는 피드백 그대로 반영</h3><p>"이 사진을 맨 위로", "색을 좀 더 밝게"처럼 편하게 말씀해 주세요. 디자인 용어를 몰라도 원하시는 대로 고쳐 드립니다.</p></div>
+      </article>
+      <article class="how-item">
+        <div class="how-ic" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="5" width="20" height="15" rx="2.5" stroke="currentColor" stroke-width="2"/><path d="M10 24h8M14 20v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div><h3>PC와 모바일에서 바로 열리는 링크</h3><p>완성본은 이미지 시안이 아니라 실제 주소로 전달합니다. 휴대폰으로 열어 지인에게 보여주고 의견을 모아 보세요.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 준비물 -->
+<section class="sec" id="prepare">
+  <div class="wrap">
+    <div class="split">
+      <div class="panel">
+        <h3>이것만 준비해 주세요</h3>
+        <p>자료가 구체적일수록 첫 완성본이 원하시는 모습에 가까워집니다.</p>
+        <ul class="check">
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="var(--sky)"/><path d="M6.5 11.2l3 3 6-6.4" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>마음에 드는 예시 사이트</b><span>"이 사이트처럼"이라고 보여줄 수 있는 링크 1~3개</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="var(--sky)"/><path d="M6.5 11.2l3 3 6-6.4" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>사용할 이미지</b><span>로고, 매장·제품·현장 사진 등</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="var(--sky)"/><path d="M6.5 11.2l3 3 6-6.4" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>들어갈 내용</b><span>상호, 소개글, 메뉴나 서비스, 가격, 연락처, 주소</span></div></li>
+          <li><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="var(--sky)"/><path d="M6.5 11.2l3 3 6-6.4" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>원하는 분위기 한 줄</b><span>예: "깔끔하고 신뢰감 있게", "따뜻하고 감성적으로"</span></div></li>
+        </ul>
+      </div>
+
+      <div class="panel blue">
+        <h3>이런 사이트를 만들 수 있어요</h3>
+        <p>한 페이지짜리 소개 사이트부터 여러 섹션이 있는 홈페이지까지 가능합니다.</p>
+        <div class="kinds">
+          <span>매장 · 카페 · 바 소개</span>
+          <span>모바일 청첩장</span>
+          <span>회사 · 기업 홈페이지</span>
+          <span>상담 · 예약 안내</span>
+          <span>병원 · 학원 · 공방</span>
+          <span>포트폴리오</span>
+          <span>이벤트 · 행사 안내</span>
+          <span>제품 소개 랜딩페이지</span>
+        </div>
+        <p class="note">메뉴판, 갤러리, 오시는 길(지도 링크), 문의 양식, 참석 여부(RSVP) 양식처럼 필요한 기능을 함께 넣어드립니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec band" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">FAQ</p>
+      <h2>자주 묻는 질문</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>정말 2일 안에 만들어지나요?</summary>
+        <p>원하는 예시 사이트와 이미지가 준비된 경우 자료를 받은 날부터 2일 이내에 완성본을 보내드립니다. 자료가 없거나 페이지가 많은 경우에는 상담 후 일정을 따로 안내해 드립니다.</p>
+      </details>
+      <details>
+        <summary>Claude AI로 만든다는 건 어떤 의미인가요?</summary>
+        <p>Claude AI를 활용해 디자인과 코드 작업 시간을 크게 줄였습니다. 그래서 일반적인 제작보다 빠르게 완성본을 보여드리고, 수정도 빠르게 반영할 수 있습니다. 구성과 마무리 확인은 사람이 직접 합니다.</p>
+      </details>
+      <details>
+        <summary>완성 후에 수정할 수 있나요?</summary>
+        <p>네. 완성본을 확인하신 뒤 문구, 사진, 색상, 섹션 순서 등 바꾸고 싶은 부분을 알려주시면 반영해서 다시 보내드립니다.</p>
+      </details>
+      <details>
+        <summary>모바일에서도 잘 보이나요?</summary>
+        <p>모든 사이트는 휴대폰, 태블릿, PC 화면에 맞춰 자동으로 배치가 바뀌도록 만듭니다. 위 제작 사례도 휴대폰으로 열어보시면 확인하실 수 있습니다.</p>
+      </details>
+      <details>
+        <summary>사이트 주소(도메인)와 호스팅은 어떻게 하나요?</summary>
+        <p>제작 사례처럼 카페24 호스팅이나 GitHub Pages로 바로 공개할 수 있습니다. 이미 사용 중인 도메인이 있다면 연결해 드립니다.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 문의 -->
+<section class="cta" id="contact">
+  <div class="wrap">
+    <div class="cta-box">
+      <div>
+        <h2>예시 사이트 링크 하나로<br>시작해 보세요</h2>
+        <p>원하는 사이트 링크와 이미지를 보내주시면 2일 안에 완성본으로 답해 드립니다.</p>
+      </div>
+      <!-- TODO: 실제 연락처로 바꿔 주세요 -->
+      <div class="contact">
+        <div><small>KAKAOTALK</small><strong>[카카오톡 ID 입력]</strong></div>
+        <div><small>PHONE</small><strong>[전화번호 입력]</strong></div>
+        <div><small>EMAIL</small><strong>[이메일 입력]</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="ft">
+  <div class="wrap">
+    <span>© 2026 이틀 홈페이지</span>
+    <span>Claude AI로 빠르게, 원하는 모습 그대로</span>
+  </div>
+</footer>
+
+<a class="float-cta" id="floatCta" href="#contact">제작 문의하기
+  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</a>
+<button class="top-btn" id="topBtn" type="button" aria-label="맨 위로">
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 14V4M4.5 8.5L9 4l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // 헤더 그림자 + 맨 위로 버튼
+  var hd = document.querySelector('.hd'), topBtn = document.getElementById('topBtn');
+  function onScroll(){
+    var y = window.scrollY;
+    hd.classList.toggle('scrolled', y > 10);
+    topBtn.classList.toggle('show', y > 600);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  topBtn.addEventListener('click', function(){ window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'}); });
+
+  // 문제 제기 문장: 스크롤 위치에 따라 글자 채우기
+  var fills = document.querySelectorAll('.fill-t');
+  function fillTick(){
+    var vh = window.innerHeight;
+    fills.forEach(function(el){
+      var r = el.getBoundingClientRect();
+      var p = (vh * .82 - r.top) / (r.height + vh * .3);
+      el.style.setProperty('--p', (Math.max(0, Math.min(1, p)) * 100).toFixed(1) + '%');
+    });
+  }
+  if (!reduce){ window.addEventListener('scroll', fillTick, {passive:true}); window.addEventListener('resize', fillTick); fillTick(); }
+
+  // 떠 있는 문의 버튼: 첫 화면을 지나면 보이고, 문의 영역에서는 숨김
+  var floatCta = document.getElementById('floatCta'), contact = document.getElementById('contact');
+  function ctaTick(){
+    var past = window.scrollY > window.innerHeight * .7;
+    var atContact = contact.getBoundingClientRect().top < window.innerHeight * .8;
+    floatCta.classList.toggle('show', past && !atContact);
+  }
+  window.addEventListener('scroll', ctaTick, {passive:true}); ctaTick();
+
+  // 주소창 타이핑
+  var typed = document.getElementById('typed');
+  var urls = ['your-brand.com','cafe-jungle.kr','our-wedding.site','hana-enc.co.kr','studio-blue.com'];
+  if (typed && !reduce){
+    var ui = 0, ci = urls[0].length, del = true;
+    var tick = function(){
+      var w = urls[ui];
+      if (del){ ci--; if (ci <= 0){ del = false; ui = (ui + 1) % urls.length; } }
+      else { ci++; if (ci >= urls[ui].length){ del = true; typed.textContent = urls[ui]; return setTimeout(tick, 2200); } }
+      typed.textContent = urls[ui].slice(0, Math.max(ci,0));
+      setTimeout(tick, del ? 35 : 75);
+    };
+    setTimeout(tick, 2200);
+  }
+
+  // 제작 사례 화면: 내용을 두 배로 늘려 hover 시 스크롤되는 효과
+  document.querySelectorAll('.work .mock').forEach(function(m){
+    var inner = document.createElement('div'); inner.className = 'mock-in';
+    while (m.firstChild) inner.appendChild(m.firstChild);
+    var copy = inner.cloneNode(true);
+    Array.prototype.slice.call(copy.children).forEach(function(c){ inner.appendChild(c); });
+    if (m.style.justifyItems) inner.style.justifyItems = m.style.justifyItems;
+    m.appendChild(inner);
+  });
+
+  // 기울기 효과
+  function tilt(el, target, amt){
+    el.addEventListener('pointermove', function(e){
+      var r = el.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      target.style.setProperty('--ry', (x * amt) + 'deg');
+      target.style.setProperty('--rx', (-y * amt) + 'deg');
+    });
+    el.addEventListener('pointerleave', function(){
+      target.style.setProperty('--ry', '0deg'); target.style.setProperty('--rx', '0deg');
+    });
+  }
+  if (fine && !reduce){
+    var stage = document.querySelector('.stage');
+    tilt(document.querySelector('.hero'), stage, 8);
+    document.querySelectorAll('.work').forEach(function(w){ tilt(w, w.querySelector('.win'), 7); });
+  }
+
+  // 문의 박스 스포트라이트
+  var cta = document.querySelector('.cta-box');
+  cta.addEventListener('pointermove', function(e){
+    var r = cta.getBoundingClientRect();
+    cta.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    cta.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+
+  // 스크롤 등장 (화면 아래쪽에 있는 요소만 숨겼다가 보여줌)
+  if ('IntersectionObserver' in window && !reduce){
+    var groups = [['.how-item',.1],['.sec-head',0],['.work',.12],['.tl li',.15],['.panel',.12],['.faq details',.06],['.cta-box',0]];
+    var vh = window.innerHeight;
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.remove('pre'); io.unobserve(en.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px'});
+    groups.forEach(function(g){
+      document.querySelectorAll(g[0]).forEach(function(el, i){
+        el.classList.add('rv');
+        el.style.setProperty('--d', (i * g[1]) + 's');
+        if (el.getBoundingClientRect().top > vh){ el.classList.add('pre'); io.observe(el); }
+      });
+    });
+    var tl = document.querySelector('.tl');
+    if (tl.getBoundingClientRect().top > vh){ tl.classList.add('pre'); io.observe(tl); }
+  }
+
+  // 현재 섹션 메뉴 강조
+  var links = document.querySelectorAll('.nav a');
+  if ('IntersectionObserver' in window){
+    var navIo = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if (en.isIntersecting){
+          links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + en.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    ['works','process','how','prepare','faq'].forEach(function(id){ var s = document.getElementById(id); if (s) navIo.observe(s); });
+  }
+})();
+</script>
+
+</body>
+</html>
