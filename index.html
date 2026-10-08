@@ -176,6 +176,9 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
 .shot:hover::after,.shot:focus-visible::after{opacity:1;transform:none}
 .wbody{min-width:0}
 .wbody h3{font-size:clamp(22px,2.2vw,28px);font-weight:800}
+.feat-badge{display:inline-flex;align-items:center;gap:6px;margin-bottom:10px;padding:6px 14px 6px 10px;border-radius:999px;background:var(--point);color:var(--navy);font-size:13.5px;font-weight:800}
+.feat-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.winfo dd b.hl{color:var(--ink);font-weight:800;background:linear-gradient(transparent 60%,rgba(221,243,94,.6) 60%)}
 .winfo{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:16px 0 0;font-size:15px}
 .winfo dt{font-weight:700;color:var(--blue);white-space:nowrap}
 .winfo dd{margin:0;color:var(--muted);min-width:0}
@@ -522,9 +525,10 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
       <article class="work">
         <a class="shot" href="https://jungle2304.mycafe24.com/" target="_blank" rel="noopener" aria-label="BAR JUNGLE 사이트 새 창으로 보기"><div class="pc"><img src="assets/jungle-pc.jpg" alt="BAR JUNGLE 사이트 PC 화면" loading="lazy"></div><div class="phone"><img src="assets/jungle-m.jpg" alt="" loading="lazy"></div></a>
         <div class="wbody">
+          <span class="feat-badge">관리자 페이지 기능 포함</span>
           <h3>BAR JUNGLE</h3>
-          <dl class="winfo"><dt>업종</dt><dd>바 · 주점</dd><dt>유형</dt><dd>원페이지 매장 소개</dd><dt>주요 기능</dt><dd>시그니처 메뉴 소개, 전체 메뉴판, 매장 사진 갤러리, 오시는 길과 예약 안내</dd></dl>
-          <p class="match">이런 유형은 <b>STANDARD</b> 구성으로 제작할 수 있습니다.</p>
+          <dl class="winfo"><dt>업종</dt><dd>바 · 주점</dd><dt>유형</dt><dd>원페이지 매장 소개</dd><dt>주요 기능</dt><dd><b class="hl">관리자 페이지에서 직접 내용 관리</b>, 시그니처 메뉴 소개, 전체 메뉴판, 매장 사진 갤러리, 오시는 길과 예약 안내</dd></dl>
+          <p class="match">이런 유형은 <b>STANDARD</b> 구성으로 제작할 수 있습니다. 관리자 페이지 기능은 상담 시 범위와 비용을 안내해 드립니다.</p>
           <div class="wact">
             <a class="sbtn" href="https://jungle2304.mycafe24.com/" target="_blank" rel="noopener">사이트 방문 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M5 13L13 5M6.5 5H13v6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
             <button class="sbtn b" type="button" data-similar="standard" data-opts="">비슷하게 만들면 얼마? 견적 보기</button>
@@ -536,10 +540,10 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
         <div class="wbody">
           <h3>저희 결혼합니다</h3>
           <dl class="winfo"><dt>업종</dt><dd>웨딩</dd><dt>유형</dt><dd>모바일 청첩장 (원페이지)</dd><dt>주요 기능</dt><dd>신랑·신부 소개, 예식 일시, 사진 갤러리, 오시는 길, 마음 전하실 곳, 참석 여부(RSVP) 양식</dd></dl>
-          <p class="match">이런 유형은 <b>STANDARD + 문의 폼 추가</b> 구성으로 제작할 수 있습니다.</p>
+          <p class="match">이런 유형은 <b>LIGHT</b> 구성으로 제작할 수 있습니다.</p>
           <div class="wact">
             <a class="sbtn" href="https://shinbumsun.github.io/wedding-ex/" target="_blank" rel="noopener">사이트 방문 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M5 13L13 5M6.5 5H13v6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-            <button class="sbtn b" type="button" data-similar="standard" data-opts="form">비슷하게 만들면 얼마? 견적 보기</button>
+            <button class="sbtn b" type="button" data-similar="light" data-opts="">비슷하게 만들면 얼마? 견적 보기</button>
           </div>
         </div>
       </article>
@@ -548,10 +552,10 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
         <div class="wbody">
           <h3>하나이엔씨개발(주)</h3>
           <dl class="winfo"><dt>업종</dt><dd>건설 · 해체 · 토공</dd><dt>유형</dt><dd>기업 홈페이지 (원페이지)</dd><dt>주요 기능</dt><dd>회사소개, 사업영역, 시공실적, 견적 문의 양식</dd></dl>
-          <p class="match">이런 유형은 <b>STANDARD + 문의 폼 추가</b> 구성으로 제작할 수 있습니다.</p>
+          <p class="match">이런 유형은 <b>LIGHT</b> 구성으로 제작할 수 있습니다.</p>
           <div class="wact">
             <a class="sbtn" href="https://shinbumsun.github.io/hana-enc/" target="_blank" rel="noopener">사이트 방문 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M5 13L13 5M6.5 5H13v6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-            <button class="sbtn b" type="button" data-similar="standard" data-opts="form">비슷하게 만들면 얼마? 견적 보기</button>
+            <button class="sbtn b" type="button" data-similar="light" data-opts="">비슷하게 만들면 얼마? 견적 보기</button>
           </div>
         </div>
       </article>
@@ -560,10 +564,10 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
         <div class="wbody">
           <h3>지리산이도령 천을당</h3>
           <dl class="winfo"><dt>업종</dt><dd>사주 · 상담</dd><dt>유형</dt><dd>상담 · 예약 안내 (원페이지)</dd><dt>주요 기능</dt><dd>상담 코스와 가격 안내, 사진 갤러리, 후기, 전화·인스타그램·톡톡 문의 연결</dd></dl>
-          <p class="match">이런 유형은 <b>STANDARD</b> 구성으로 제작할 수 있습니다.</p>
+          <p class="match">이런 유형은 <b>LIGHT</b> 구성으로 제작할 수 있습니다.</p>
           <div class="wact">
             <a class="sbtn" href="https://sbs7195.mycafe24.com/" target="_blank" rel="noopener">사이트 방문 <svg width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M5 13L13 5M6.5 5H13v6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-            <button class="sbtn b" type="button" data-similar="standard" data-opts="">비슷하게 만들면 얼마? 견적 보기</button>
+            <button class="sbtn b" type="button" data-similar="light" data-opts="">비슷하게 만들면 얼마? 견적 보기</button>
           </div>
         </div>
       </article>
