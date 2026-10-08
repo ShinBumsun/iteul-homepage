@@ -72,7 +72,6 @@ window.MADE48_PRICING = {
   },
 
   // 문의 채널
-  kakaoId: 'sbs232',
   // 카카오톡 오픈채팅 또는 채널 채팅 링크를 넣으면 '카카오톡으로 바로 문의하기' 버튼이 나타납니다.
   // 예) 'https://open.kakao.com/o/xxxxxxx'  또는  'http://pf.kakao.com/_xxxxx/chat'
   kakaoLink: 'https://open.kakao.com/o/siSDRoRi'

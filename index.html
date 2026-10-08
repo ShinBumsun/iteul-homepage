@@ -128,7 +128,8 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
 .menu nav a:hover{color:var(--point)}
 .menu.open nav a{opacity:1;transform:none}
 .menu.open nav a:nth-child(2){transition-delay:.05s}.menu.open nav a:nth-child(3){transition-delay:.1s}.menu.open nav a:nth-child(4){transition-delay:.15s}.menu.open nav a:nth-child(5){transition-delay:.2s}.menu.open nav a:nth-child(6){transition-delay:.25s}.menu.open nav a:nth-child(7){transition-delay:.3s}.menu.open nav a:nth-child(8){transition-delay:.35s}
-.menu-foot{font-size:15px;opacity:.8}
+.menu-foot{justify-self:start;font-size:15px;font-weight:700;opacity:.85;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:2px}
+.menu-foot:hover{opacity:1;color:var(--point)}
 
 /* ───── 히어로 ───── */
 .hero{position:relative;overflow:hidden;min-height:max(720px,100svh);display:flex;align-items:flex-end;isolation:isolate}
@@ -319,9 +320,6 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
 .cta .k2>span{animation-delay:-2s}.cta .k3>span{animation-delay:-4s}.cta .k4>span{animation-delay:-1s}
 .cta h2{font-family:var(--f-en);font-size:clamp(56px,10vw,150px);font-weight:900;letter-spacing:-.05em;line-height:.95;position:relative}
 .cta .lead{margin:28px auto 0;font-size:19px}
-.kakao{position:relative;display:inline-flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:44px;padding:14px 14px 14px 28px;border-radius:999px}
-.kakao small{display:block;font-family:var(--f-en);font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--sky);text-align:left}
-.kakao strong{font-family:var(--f-en);font-size:26px;font-weight:800;letter-spacing:-.01em;user-select:all}
 .copy{border:0;cursor:pointer;background:var(--white);color:var(--blue);font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;transition:background .2s,color .2s}
 .copy:hover{background:var(--point);color:var(--navy)}
 .cta .k1{left:7%;top:20%}.cta .k2{right:8%;top:16%}.cta .k3{left:12%;bottom:16%}.cta .k4{right:10%;bottom:20%}
@@ -462,7 +460,6 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
 .kakao-go{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;background:#FEE500;color:#191919;font-weight:800;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s}
 .kakao-go:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(0,0,0,.5)}
 .inq-toast{margin:12px 0 0;min-height:1.4em;font-size:14px;font-weight:700;color:var(--point)}
-.kakao{margin-top:28px}
 
 /* 떠 있는 버튼 */
 .float-cta{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:40;display:inline-flex;align-items:center;gap:8px;padding:15px 24px;border-radius:999px;background:var(--blue);color:var(--white);font-weight:700;text-decoration:none;box-shadow:0 16px 36px -14px rgba(21,87,243,.8);opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .3s,transform .3s,background .2s}
@@ -512,7 +509,7 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
     <a href="#faq"><small>07</small>자주 묻는 질문</a>
     <a href="#contact"><small>08</small>제작 문의</a>
   </nav>
-  <p class="menu-foot">카카오톡 ID · sbs232</p>
+  <a class="menu-foot" id="menuKakao" href="#contact">제작 문의하기</a>
 </div>
 
 <main id="top">
@@ -872,7 +869,7 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
       </div>
       <p class="inq-sub">보낼 내용 미리보기</p>
       <pre class="inq-msg" id="inqMsg"></pre>
-      <ol class="inq-steps" id="inqSteps"><li><b>1</b>문의 내용 복사</li><li><b>2</b>카카오톡에서 ID 검색 · 친구 추가</li><li><b>3</b>붙여넣어 보내기</li></ol>
+      <ol class="inq-steps" id="inqSteps"><li><b>1</b>문의 내용 복사</li><li><b>2</b>카카오톡으로 붙여넣어 보내기</li></ol>
       <div class="inq-acts">
         <a class="kakao-go" id="kakaoGo" href="#contact" target="_blank" rel="noopener" hidden>
           <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.5c-5 0-9 3.1-9 7 0 2.5 1.7 4.7 4.2 5.9l-.9 3.3c-.1.3.3.6.6.4l3.9-2.6c.4 0 .8.1 1.2.1 5 0 9-3.1 9-7s-4-7.1-9-7.1z"/></svg>
@@ -881,10 +878,6 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
         <button class="copy" id="copyMsg" type="button">문의 내용 복사하기</button>
       </div>
       <p class="inq-toast" id="inqToast" role="status" aria-live="polite"></p>
-    </div>
-    <div class="kakao glass">
-      <div><small>KAKAOTALK ID</small><strong id="kid">sbs232</strong></div>
-      <button class="copy" id="copy" type="button">ID 복사하기</button>
     </div>
   </div>
 </section>
@@ -1168,6 +1161,7 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
     var kakaoGo = document.getElementById('kakaoGo'), toast = document.getElementById('inqToast');
     if (P.kakaoLink){
       kakaoGo.href = P.kakaoLink; kakaoGo.hidden = false;
+      var mk = document.getElementById('menuKakao'); mk.href = P.kakaoLink; mk.target = '_blank'; mk.rel = 'noopener'; mk.textContent = '카카오톡 오픈채팅으로 문의하기 ↗';
       document.getElementById('inqSteps').innerHTML = '<li><b>1</b>카카오톡으로 바로 문의하기 누르기</li><li><b>2</b>대화창에 붙여넣기 (문의 내용은 자동 복사)</li><li><b>3</b>보내기</li>';
       kakaoGo.addEventListener('click', function(){
         var txt = document.getElementById('inqMsg').textContent;
@@ -1197,21 +1191,6 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
 
     render();
   }
-
-  // 카카오톡 ID 복사
-  var copyBtn = document.getElementById('copy');
-  copyBtn.addEventListener('click', function(){
-    var id = document.getElementById('kid').textContent;
-    function done(){ copyBtn.textContent = '복사되었습니다'; setTimeout(function(){ copyBtn.textContent = 'ID 복사하기'; }, 1800); }
-    function fallback(){
-      var range = document.createRange(); range.selectNodeContents(document.getElementById('kid'));
-      var sel = getSelection(); sel.removeAllRanges(); sel.addRange(range);
-      copyBtn.textContent = 'ID를 선택했어요. 복사해 주세요';
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(id).then(done, fallback);
-    } else fallback();
-  });
 
   var ticking = false;
   function onScroll(){
