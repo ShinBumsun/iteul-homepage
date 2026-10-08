@@ -319,15 +319,11 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
 
 /* ───── 문의 ───── */
 .cta{position:relative;overflow:hidden;text-align:center;padding-block:150px 140px}
-.cta .chip-wrap{position:absolute}
-.cta .chip-wrap>span{animation:bob 6s ease-in-out infinite}
-.cta .k2>span{animation-delay:-2s}.cta .k3>span{animation-delay:-4s}.cta .k4>span{animation-delay:-1s}
 .cta h2{font-family:var(--f-en);font-size:clamp(56px,10vw,150px);font-weight:900;letter-spacing:-.05em;line-height:.95;position:relative}
 .cta .lead{margin:28px auto 0;font-size:19px}
 .copy{border:0;cursor:pointer;background:var(--white);color:var(--blue);font-weight:700;font-size:15px;padding:13px 22px;border-radius:999px;transition:background .2s,color .2s}
 .copy:hover{background:var(--point);color:var(--navy)}
-.cta .k1{left:7%;top:20%}.cta .k2{right:8%;top:16%}.cta .k3{left:12%;bottom:16%}.cta .k4{right:10%;bottom:20%}
-@media (max-width:760px){.cta .k1,.cta .k4{display:none}.cta .k2{top:6%;right:4%}.cta .k3{bottom:5%;left:4%}.cta{padding-block:130px 120px}}
+@media (max-width:760px){.cta{padding-block:120px 110px}}
 
 .ft{background:var(--navy);color:rgba(255,255,255,.7);padding-block:36px;font-size:14px}
 .ft .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;max-width:none;padding-inline:clamp(18px,4vw,60px)}
@@ -503,7 +499,16 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
 .inq-head b{font-size:17px}
 .inq-head a{font-size:14px;font-weight:700;color:var(--sky)}
 .inq-msg{margin:0;white-space:pre-wrap;word-break:break-word;font-family:var(--f-ko);font-size:15px;line-height:1.75;background:rgba(5,20,90,.28);border-radius:16px;padding:18px 20px}
-.inq-fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:20px}
+.inq-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px;margin-bottom:20px}
+.f small{font-weight:500;color:rgba(255,255,255,.6);margin-left:4px}
+.refs{display:grid;gap:8px}
+.ref-row{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:8px;align-items:center}
+.ref-row b{font-family:var(--f-en);font-size:13px;color:var(--point);text-align:center}
+.ref-del{width:40px;height:40px;border-radius:10px;border:1.5px solid rgba(255,255,255,.28);background:transparent;color:var(--white);cursor:pointer;font-size:18px;line-height:1}
+.ref-del:hover{border-color:var(--point);color:var(--point)}
+.ref-add{justify-self:start;border:1.5px dashed rgba(255,255,255,.45);background:transparent;color:var(--white);font-weight:700;font-size:14px;padding:9px 16px;border-radius:999px;cursor:pointer}
+.ref-add:hover{border-color:var(--point);color:var(--point)}
+.ref-add[hidden]{display:none}
 .f{display:grid;gap:6px;align-content:start;font-size:13.5px;font-weight:700;color:rgba(255,255,255,.88)}
 .f.full{grid-column:1/-1}
 .f input,.f textarea{width:100%;min-width:0;font-family:var(--f-ko);font-size:15px;font-weight:500;color:var(--white);background:rgba(5,20,90,.28);border:1.5px solid rgba(255,255,255,.28);border-radius:12px;padding:12px 14px;resize:vertical;transition:border-color .2s,background .2s}
@@ -512,11 +517,18 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
 .inq-sub{margin:0 0 8px;font-size:13.5px;font-weight:700;color:var(--sky)}
 @media (max-width:760px){.inq-fields{grid-template-columns:1fr}.inq{padding:20px}}
 .inq-hint{margin:12px 0 0;font-size:14px;color:rgba(255,255,255,.75)}
-.inq-steps{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14.5px;color:rgba(255,255,255,.85)}
-.inq-steps li b{color:var(--point);font-family:var(--f-en);margin-right:6px}
 .inq-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.kakao-go{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;background:#FEE500;color:#191919;font-weight:800;font-size:15px;text-decoration:none;transition:transform .2s,box-shadow .2s}
-.kakao-go:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(0,0,0,.5)}
+.send{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:20px}
+.send-btn{display:inline-flex;align-items:center;gap:10px;padding:12px 22px 12px 12px;border-radius:999px;border:0;background:var(--white);color:var(--blue);font-weight:800;font-size:15.5px;text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+.send-btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(0,0,0,.5)}
+.send-btn>b{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:var(--white);font-family:var(--f-en);font-size:14px}
+.send-btn.kakao{background:#FEE500;color:#191919}
+.send-btn.kakao>b{background:#191919;color:#FEE500}
+.send-btn.done>b{background:#22A06B}
+.send-btn.kakao.ready{animation:ready 1.2s ease-in-out 3}
+@keyframes ready{0%,100%{box-shadow:0 0 0 0 rgba(254,229,0,.7)}50%{box-shadow:0 0 0 10px rgba(254,229,0,0)}}
+.send-arrow{font-weight:800;color:var(--point);font-size:20px}
+@media (max-width:520px){.send{flex-direction:column;align-items:stretch}.send-btn{justify-content:flex-start}.send-arrow{transform:rotate(90deg);align-self:center}}
 .inq-toast{margin:12px 0 0;min-height:1.4em;font-size:14px;font-weight:700;color:var(--point)}
 
 /* 떠 있는 버튼 */
@@ -973,10 +985,6 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
 
 <!-- 문의 -->
 <section class="cta blue" id="contact" data-tone="blue">
-  <div class="chip-wrap k1"><span class="chip g">Example</span></div>
-  <div class="chip-wrap k2"><span class="chip s">48 Hours</span></div>
-  <div class="chip-wrap k3"><span class="chip d"><i aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M6 2.5v7M2.5 6h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></i>Make</span></div>
-  <div class="chip-wrap k4"><span class="chip w">Feedback</span></div>
   <div class="wrap">
     <p class="label">Contact</p>
     <h2>Let’s make<br>it in 48<span class="dot">.</span></h2>
@@ -986,19 +994,24 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
       <p class="inq-hint" id="inqHint" style="margin:0 0 16px"></p>
       <div class="inq-fields">
         <label class="f"><span>업종 / 상호</span><input id="fName" type="text" autocomplete="organization" placeholder="예: 카페 / 블루빈"></label>
-        <label class="f"><span>참고하고 싶은 사이트</span><input id="fRef" type="text" inputmode="url" placeholder="예: https://..."></label>
         <label class="f"><span>원하는 오픈 시기</span><input id="fWhen" type="text" placeholder="예: 11월 첫째 주"></label>
+        <div class="f full" role="group" aria-labelledby="refLabel">
+          <span id="refLabel">참고하고 싶은 사이트 <small>여러 개 넣을 수 있어요</small></span>
+          <div class="refs" id="refList"></div>
+          <button class="ref-add" id="refAdd" type="button">+ 사이트 추가</button>
+        </div>
         <label class="f full"><span>요청 사항</span><textarea id="fNote" rows="3" placeholder="원하는 분위기, 꼭 넣고 싶은 내용, 궁금한 점을 자유롭게 적어 주세요"></textarea></label>
       </div>
       <p class="inq-sub">보낼 내용 미리보기</p>
       <pre class="inq-msg" id="inqMsg"></pre>
-      <ol class="inq-steps" id="inqSteps"><li><b>1</b>문의 내용 복사</li><li><b>2</b>카카오톡으로 붙여넣어 보내기</li></ol>
-      <div class="inq-acts">
-        <a class="kakao-go" id="kakaoGo" href="#contact" target="_blank" rel="noopener" hidden>
+      <div class="send">
+        <button class="send-btn" id="copyMsg" type="button"><b>1</b><span id="copyLabel">문의 내용 복사하기</span></button>
+        <span class="send-arrow" id="sendArrow" aria-hidden="true" hidden>→</span>
+        <a class="send-btn kakao" id="kakaoGo" href="#contact" target="_blank" rel="noopener" hidden>
+          <b>2</b>
           <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.5c-5 0-9 3.1-9 7 0 2.5 1.7 4.7 4.2 5.9l-.9 3.3c-.1.3.3.6.6.4l3.9-2.6c.4 0 .8.1 1.2.1 5 0 9-3.1 9-7s-4-7.1-9-7.1z"/></svg>
-          카카오톡으로 바로 문의하기
+          <span>카카오톡 열어서 붙여넣기</span>
         </a>
-        <button class="copy" id="copyMsg" type="button">문의 내용 복사하기</button>
       </div>
       <p class="inq-toast" id="inqToast" role="status" aria-live="polite"></p>
     </div>
@@ -1249,7 +1262,9 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
       }
       var v = function(id){ return document.getElementById(id).value.trim(); };
       t.push('업종 / 상호: ' + v('fName'));
-      t.push('참고하고 싶은 사이트: ' + v('fRef'));
+      var refs = getRefs();
+      if (refs.length > 1){ t.push('참고하고 싶은 사이트:'); refs.forEach(function(r, i){ t.push('  ' + (i + 1) + '. ' + r); }); }
+      else t.push('참고하고 싶은 사이트: ' + (refs[0] || ''));
       t.push('원하는 오픈 시기: ' + v('fWhen'));
       if (v('fNote')) t.push('요청 사항: ' + v('fNote'));
       document.getElementById('inqMsg').textContent = t.join('\n');
@@ -1303,37 +1318,65 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
         touch(); go('estimate');
       });
     });
-    // 카카오톡 바로 문의: 링크가 설정된 경우에만 노출
+    // 문의 보내기: 1 복사 → 2 카카오톡
     var kakaoGo = document.getElementById('kakaoGo'), toast = document.getElementById('inqToast');
-    if (P.kakaoLink){
-      kakaoGo.href = P.kakaoLink; kakaoGo.hidden = false;
-      var mk = document.getElementById('menuKakao'); mk.href = P.kakaoLink; mk.target = '_blank'; mk.rel = 'noopener'; mk.textContent = '카카오톡 오픈채팅으로 문의하기 ↗';
-      document.getElementById('inqSteps').innerHTML = '<li><b>1</b>카카오톡으로 바로 문의하기 누르기</li><li><b>2</b>대화창에 붙여넣기 (문의 내용은 자동 복사)</li><li><b>3</b>보내기</li>';
-      kakaoGo.addEventListener('click', function(){
-        var txt = document.getElementById('inqMsg').textContent;
-        if (navigator.clipboard && navigator.clipboard.writeText){
-          navigator.clipboard.writeText(txt).then(function(){ toast.textContent = '문의 내용을 복사했어요. 열린 대화창에 붙여넣기만 하세요.'; }, function(){});
-        }
-      });
-    }
-    // 문의 내용 복사
-    var copyMsg = document.getElementById('copyMsg');
-    copyMsg.addEventListener('click', function(){
+    var copyMsg = document.getElementById('copyMsg'), copyLabel = document.getElementById('copyLabel');
+    function copyText(onOk, onFail){
       var msgEl = document.getElementById('inqMsg'), txt = msgEl.textContent;
-      function ok(){ copyMsg.textContent = '복사되었습니다'; setTimeout(function(){ copyMsg.textContent = '문의 내용 복사하기'; }, 1800); }
-      function fb(){ var r = document.createRange(); r.selectNodeContents(msgEl); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); copyMsg.textContent = '내용을 선택했어요. 복사해 주세요'; }
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok, fb); else fb();
+      function fb(){ var r = document.createRange(); r.selectNodeContents(msgEl); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); if (onFail) onFail(); }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(onOk, fb); else fb();
+    }
+    if (P.kakaoLink){
+      kakaoGo.href = P.kakaoLink; kakaoGo.hidden = false; document.getElementById('sendArrow').hidden = false;
+      var mk = document.getElementById('menuKakao'); mk.href = P.kakaoLink; mk.target = '_blank'; mk.rel = 'noopener'; mk.textContent = '카카오톡 오픈채팅으로 문의하기 ↗';
+      // 2번을 바로 눌러도 내용은 자동 복사
+      kakaoGo.addEventListener('click', function(){ copyText(function(){}, null); });
+    }
+    copyMsg.addEventListener('click', function(){
+      copyText(function(){
+        copyMsg.classList.add('done'); copyLabel.textContent = '복사 완료';
+        toast.textContent = P.kakaoLink ? '복사됐어요. 이제 2번 버튼을 눌러 카카오톡 대화창에 붙여넣으세요.' : '복사됐어요. 카카오톡으로 붙여넣어 보내주세요.';
+        kakaoGo.classList.remove('ready'); void kakaoGo.offsetWidth; kakaoGo.classList.add('ready');
+        setTimeout(function(){ copyMsg.classList.remove('done'); copyLabel.textContent = '문의 내용 복사하기'; }, 4000);
+      }, function(){ toast.textContent = '내용을 선택해 두었어요. 길게 눌러 복사한 뒤 2번 버튼을 눌러 주세요.'; });
     });
 
-    // 입력한 문의 내용은 이 브라우저에 임시 저장
-    var FKEY = 'made48-inquiry', fields = ['fName', 'fRef', 'fWhen', 'fNote'];
-    try { var fs = JSON.parse(localStorage.getItem(FKEY) || '{}'); fields.forEach(function(id){ if (fs[id]) document.getElementById(id).value = fs[id]; }); } catch(e){}
-    fields.forEach(function(id){
-      document.getElementById(id).addEventListener('input', function(){
-        renderInquiry();
-        try { var o = {}; fields.forEach(function(f){ o[f] = document.getElementById(f).value; }); localStorage.setItem(FKEY, JSON.stringify(o)); } catch(e){}
+    // 참고 사이트 목록 (여러 개)
+    var refList = document.getElementById('refList'), refAdd = document.getElementById('refAdd'), MAX_REFS = 5;
+    function getRefs(){ return Array.prototype.map.call(refList.querySelectorAll('input'), function(x){ return x.value.trim(); }).filter(Boolean); }
+    function addRef(val, focus){
+      var n = refList.children.length + 1;
+      var row = document.createElement('div'); row.className = 'ref-row';
+      row.innerHTML = '<b>' + n + '</b><input type="text" inputmode="url" placeholder="예: https://..." aria-label="참고 사이트 ' + n + '"><button class="ref-del" type="button" aria-label="참고 사이트 ' + n + ' 삭제">×</button>';
+      row.querySelector('input').value = val || '';
+      row.querySelector('input').addEventListener('input', saveFields);
+      row.querySelector('.ref-del').addEventListener('click', function(){
+        if (refList.children.length > 1) row.remove(); else row.querySelector('input').value = '';
+        renumber(); saveFields();
       });
-    });
+      refList.appendChild(row); renumber();
+      if (focus) row.querySelector('input').focus();
+    }
+    function renumber(){
+      Array.prototype.forEach.call(refList.children, function(r, i){ r.querySelector('b').textContent = i + 1; });
+      refAdd.hidden = refList.children.length >= MAX_REFS;
+    }
+    refAdd.addEventListener('click', function(){ addRef('', true); });
+
+    // 입력한 문의 내용은 이 브라우저에 임시 저장
+    var FKEY = 'made48-inquiry', fields = ['fName', 'fWhen', 'fNote'];
+    function saveFields(){
+      renderInquiry();
+      try { var o = { refs: getRefs() }; fields.forEach(function(f){ o[f] = document.getElementById(f).value; }); localStorage.setItem(FKEY, JSON.stringify(o)); } catch(e){}
+    }
+    var savedRefs = [];
+    try {
+      var fs = JSON.parse(localStorage.getItem(FKEY) || '{}');
+      fields.forEach(function(id){ if (fs[id]) document.getElementById(id).value = fs[id]; });
+      savedRefs = fs.refs || (fs.fRef ? [fs.fRef] : []);
+    } catch(e){}
+    if (savedRefs.length) savedRefs.slice(0, MAX_REFS).forEach(function(r){ addRef(r); }); else addRef('');
+    fields.forEach(function(id){ document.getElementById(id).addEventListener('input', saveFields); });
 
     render();
   }
