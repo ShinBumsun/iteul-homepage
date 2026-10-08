@@ -56,12 +56,12 @@ window.MADE48_PRICING = {
   //  unit: true      → 개수를 고를 수 있음
   //  negotiable: true → 예상 합계에 넣지 않고 '별도 협의'로 표시
   options: [
-    { id: 'section', name: '섹션 1개 추가', price: 30000, unit: true, max: 10 },
-    { id: 'subpage', name: '서브페이지 1개 추가', price: 70000, unit: true, max: 10 },
-    { id: 'popup', name: '팝업 배너 제작', price: 30000 },
-    { id: 'form', name: '문의 폼 추가', price: 50000 },
-    { id: 'aiimg', name: 'AI 이미지 3장 제작', price: 50000 },
-    { id: 'i18n', name: '다국어 페이지 추가', price: 100000, negotiable: true, desc: '언어와 분량에 따라 금액이 달라집니다' }
+    { id: 'section', name: '섹션 1개 추가', price: 30000, unit: true, max: 10, desc: '한 페이지 안의 내용 구역을 하나 더 넣어요. 예) 메뉴 소개, 고객 후기, 오시는 길' },
+    { id: 'subpage', name: '서브페이지 1개 추가', price: 70000, unit: true, max: 10, desc: '메뉴를 누르면 따로 열리는 새 페이지 1장이에요. 예) 회사소개 페이지, 메뉴 상세 페이지' },
+    { id: 'popup', name: '팝업 배너 제작', price: 30000, desc: '사이트에 들어오면 먼저 뜨는 안내 창이에요. 예) 이벤트, 휴무일, 신메뉴 공지' },
+    { id: 'form', name: '문의 폼 추가', price: 50000, desc: '방문자가 이름 · 연락처 · 문의 내용을 적어서 보내는 입력 칸이에요. 예) 예약 문의, 견적 요청' },
+    { id: 'aiimg', name: 'AI 이미지 3장 제작', price: 50000, desc: '쓸 만한 사진이 없을 때 사이트에 넣을 이미지를 AI로 만들어 드려요. 예) 첫 화면 배경, 분위기 사진' },
+    { id: 'i18n', name: '다국어 페이지 추가', price: 100000, negotiable: true, desc: '영어 · 중국어 · 일본어 등 다른 언어 버전을 추가해요. 언어와 분량에 따라 금액이 달라집니다' }
   ],
 
   // 유지보수 (예시 정책)
