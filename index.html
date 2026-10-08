@@ -158,7 +158,8 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
 .chip.s{background:var(--sky);color:var(--navy)}
 .chip.w{background:#EEF1F8;color:var(--navy)}
 .chip.d{background:var(--blue-deep);color:var(--white);box-shadow:0 18px 40px -16px rgba(0,20,120,.7)}
-.chip.d i{width:1.05em;height:1.05em;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;font-style:normal;font-size:.75em}
+.chip.d i{flex:none;width:1.1em;height:1.1em;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center}
+.chip.d i svg{width:52%;height:52%;display:block}
 .c1{left:3.5%;top:22%}.c2{left:21%;top:33%}.c3{right:-1%;top:28%}.c4{left:54%;top:43%}.c5{left:30%;top:6%}
 .fx.chip-wrap>span{animation:rise 1s cubic-bezier(.2,.9,.25,1.05) both,bob 6s ease-in-out infinite;animation-delay:var(--in,0s),calc(var(--in,0s) + 1s)}
 .hero-copy{position:relative;width:100%;padding:0 clamp(18px,4vw,60px) clamp(56px,9vh,96px);max-width:900px}
@@ -524,7 +525,7 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
     <div class="fx chip-wrap c1" style="--d:1.4;--in:.35s"><span class="chip g">Fast</span></div>
     <div class="fx chip-wrap c2" style="--d:2;--in:.5s"><span class="chip s">Feedback</span></div>
     <div class="fx chip-wrap c3" style="--d:1.6;--in:.6s"><span class="chip w">Mobile Ready</span></div>
-    <div class="fx chip-wrap c4" style="--d:2.4;--in:.7s"><span class="chip d"><i>+</i>Make</span></div>
+    <div class="fx chip-wrap c4" style="--d:2.4;--in:.7s"><span class="chip d"><i aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M6 2.5v7M2.5 6h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></i>Make</span></div>
     <div class="fx chip-wrap c5" style="--d:.9;--in:.8s"><span class="chip w" style="font-size:clamp(14px,1.3vw,18px)">from ₩199,000</span></div>
   </div>
 
@@ -849,7 +850,7 @@ h1,h2,h3{margin:0;text-wrap:balance;line-height:1.25;letter-spacing:-.03em}
 <section class="cta blue" id="contact" data-tone="blue">
   <div class="chip-wrap k1"><span class="chip g">Example</span></div>
   <div class="chip-wrap k2"><span class="chip s">48 Hours</span></div>
-  <div class="chip-wrap k3"><span class="chip d"><i>+</i>Make</span></div>
+  <div class="chip-wrap k3"><span class="chip d"><i aria-hidden="true"><svg viewBox="0 0 12 12" fill="none"><path d="M6 2.5v7M2.5 6h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></i>Make</span></div>
   <div class="chip-wrap k4"><span class="chip w">Feedback</span></div>
   <div class="wrap">
     <p class="label">Contact</p>
