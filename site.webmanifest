@@ -1,0 +1,12 @@
+{
+  "name": "MADE48 · 48시간 홈페이지 제작",
+  "short_name": "MADE48",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#1557F3",
+  "theme_color": "#1557F3",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
